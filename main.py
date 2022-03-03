@@ -1,16 +1,13 @@
-# This is a sample Python script.
+# import os
+from canvasapi import Canvas
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
+api_url = 'https://canvas.hu.nl'
+api_key = '11760~FKlrTGxmCScDMwFujVWxru2ylmIQ4QR8V68DzoQ6Zr4rTrk9xstO5pvcyOIAMdEV'
+canvas = Canvas(api_url, api_key)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print(canvas.get_current_user().get_profile())
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for course in canvas.get_courses():
+        print(course)
