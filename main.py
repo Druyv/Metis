@@ -1,8 +1,7 @@
 # import os
 from canvasapi import Canvas
+from credentials import api_url, api_key
 
-api_url = 'https://canvas.hu.nl'
-api_key = '11760~FKlrTGxmCScDMwFujVWxru2ylmIQ4QR8V68DzoQ6Zr4rTrk9xstO5pvcyOIAMdEV'
 canvas = Canvas(api_url, api_key)
 
 # Press the green button in the gutter to run the script.
