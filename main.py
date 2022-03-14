@@ -1,7 +1,9 @@
 # import os
-from canvasapi import Canvas
-from credentials import api_url, api_key
-from courses import courses
+from canvasapi      import Canvas
+
+from credentials    import api_url, api_key
+from courses        import courses
+
 
 try:
     canvas = Canvas(api_url, api_key)
