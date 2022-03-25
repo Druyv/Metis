@@ -3,8 +3,8 @@ from canvasapi import Canvas
 from credentials import api_url, api_key
 
 from Course import Course
-from Exercise import Exercise, FileType
-from utils import mkchdir
+from Exercise import Exercise
+from utils import mkchdir, FileType
 
 
 try:

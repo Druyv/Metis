@@ -1,8 +1,4 @@
-from enum import Enum
-
-
-class FileType(Enum):
-    PY = 1
+from utils import FileType
 
 
 class Exercise:

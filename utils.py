@@ -1,4 +1,5 @@
 import os
+from enum import Enum
 
 
 def mkchdir(dir):
@@ -14,3 +15,11 @@ def mkchdir(dir):
         pass
     finally:
         os.chdir(dir)
+
+
+class FileType(Enum):
+    PY = 1
+
+
+class Tools(Enum):
+    Pylint = 1
