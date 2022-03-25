@@ -18,12 +18,14 @@ prog = Course('prog', 27193)
 courses = {
     prog: {
         150429: {
-            'assignments' : {
-                150430: {
-                    'filetype': FileType.PY,
-                    'tools': [Tools.Pylint]
-                }
-            }
+            'filetype': FileType.Py,
+            'tools': [Tools.Pylint],
+            'testfile': "define_some_testscript.py"
+        },
+        150430: {
+            'filetype': FileType.PY,
+            'tools': [Tools.Pylint],
+            'testfile': "define_some_testscript.py"
         }
     }
 }
