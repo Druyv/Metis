@@ -6,7 +6,7 @@ from Course import Course
 from Exercise import Exercise
 from utils import mkchdir, FileType
 
-
+canvas = None
 try:
     canvas = Canvas(api_url, api_key)
 except Exception as e:
@@ -20,5 +20,5 @@ if __name__ == '__main__':
     mkchdir("Courses")
 
     prog = Course('prog', 27193, canvas)
-    prog.add_exercise(Exercise(150430,FileType.PY))
+    prog.addExercise(Exercise(150430,FileType.PY))
     prog.downloadSubmissions()
