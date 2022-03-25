@@ -24,7 +24,7 @@ class Course:
     def __repr__(self):
         return repr(f"Course: {self.course_name}")
 
-    def add_exercise(self, exercise: Exercise):
+    def addExercise(self, exercise: Exercise):
         self.exercises.append(exercise)
 
     def downloadSubmissions(self):
@@ -41,27 +41,14 @@ class Course:
             mkchdir(str(exercise.exercise_code))
 
         submission_list = self.course_obj.get_assignment(exercise.exercise_code).get_submissions()
-        #
-        # for submission in submission_list:
-        #     if submission.attachments:
-        #         mkchdir(str(submission.user_id))
-        #         print(f"Downloading submission for {submission.user_id}")
+
         print(len(list(submission_list)))
-        i = 0
         for submission in submission_list:
             try:
                 if len(submission.attachments):
-                    
+                    mkchdir(f'{submission.user_id}{submission.submitted_at}')
+                    # Download submissions
+
             except:
                 continue
-
-        print(i)
-
-
-
-
-
-
-
-
 
