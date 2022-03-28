@@ -46,16 +46,22 @@ class Exercise:
         os.chdir(base_dir)
 
     def runToolsAndTests(self):
-        # chdir to exercise directory
-        if os.path.basename(os.getcwd()) != self.exercise_code:
+        base_dir = os.getcwd()
+        if os.path.basename(base_dir) != self.exercise_code:
             # Make directory for exercise and go there
             mkchdir(str(self.exercise_code))
 
-        for tool, opts in self.tools:
-            if tool == Tool.Pylint:
-                # pylint_opts = opts
-                # pylint.lint.Run(pylint_opts)
-                pass
+        for submission in os.listdir():
+            os.chdir(submission)
+            for tool, opts in self.tools:
+                if tool == Tool.Pylint:
+                    # pylint_opts = opts
+                    # pylint.lint.Run(pylint_opts)
+                    pass
+            os.chdir(str(self.exercise_code))
+
+
+        os.chdir(base_dir)
 
 
 
