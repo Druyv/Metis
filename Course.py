@@ -13,10 +13,10 @@ class Course:
         print(f'Exception occured: {e}')
         exit()
 
-    def __init__(self, course_name: str, course_code: int):
-        self.course_name = course_name
+    def __init__(self, course_code: int):
         self.course_code = course_code
-        self.course_obj = self.canvas.get_course(course_code)
+        self.course_obj = self.canvas.get_course(self.course_code)
+        self.course_name = self.course_obj.name
         self.exercises = list()
 
     def __hash__(self):

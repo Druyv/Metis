@@ -1,16 +1,20 @@
 import os
 
-
 from Course import Course
-from Exercise import Exercise
-from utils import mkchdir, FileType
+from utils import mkchdir
+from courses import courses
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    main_dir = os.getcwd()
-    print(main_dir)
-    mkchdir("Courses")
+    try:
+        main_dir = os.getcwd()
+        mkchdir("Courses")
+        course_list = list()
+        for course in courses:
+            course_list.append(Course(course))
 
-    prog = Course('prog', 27193)
-    prog.addExercise(Exercise(150430,FileType.PY))
-    prog.downloadSubmissions()
+        for course in course_list:
+            mkchdir(str(course.course_code))
+            course.downloadSubmissions()
+            course.runToolsAndTests()
+            os.chdir("Courses")
