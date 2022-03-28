@@ -35,15 +35,24 @@ class Course:
         self.exercises.append(exercise)
 
     def downloadSubmissions(self):
-        if os.path.basename(os.getcwd()) != self.course_code:
+        base_dir = os.getcwd()
+        if os.path.basename(base_dir) != self.course_code:
             # Make directory for course and go there
             mkchdir(str(self.course_code))
 
         for exercise in self.exercises:
-            exercise.downloadSubmissions()
+            exercise.downloadSubmissions(self.course_obj)
+
+        # Go back to original directory
+        os.chdir(base_dir)
 
     def runToolsAndTests(self):
         for exercise in self.exercises:
             exercise.runToolsAndTests()
+
+    def saveCourseObj(self):
+        # saves course obj to file
+        pass
+
 
 

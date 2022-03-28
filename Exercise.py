@@ -24,22 +24,26 @@ class Exercise:
     def addTool(self, tool):
         self.tools.append(tool)
 
-    def downloadSubmissions(self):
-        if os.path.basename(os.getcwd()) != exercise.exercise_code:
+    def downloadSubmissions(self, course_obj):
+        base_dir = os.getcwd()
+        if os.path.basename(base_dir) != self.exercise_code:
             # Make directory for exercise and go there
-            mkchdir(str(exercise.exercise_code))
+            mkchdir(str(self.exercise_code))
 
-        submission_list = self.course_obj.get_assignment(exercise.exercise_code).get_submissions()
+        submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
 
         print(len(list(submission_list)))
         for submission in submission_list:
             try:
                 if len(submission.attachments):
+                    # Make directory for submission and go there
                     mkchdir(f'{submission.user_id}{submission.submitted_at}')
                     # Download submissions
 
             except:
-                continue
+                pass
+            os.chdir(str(self.exercise_code))
+        os.chdir(base_dir)
 
     def runToolsAndTests(self):
         # chdir to exercise directory
