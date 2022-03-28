@@ -1,4 +1,5 @@
-from utils import FileType
+from utils import mkchdir, FileType as FileType, Tool as Tool
+import os
 
 
 class Exercise:
@@ -6,7 +7,7 @@ class Exercise:
         self.exercise_code = exercise_code
         self.file_type = file_type
         self.testfile = testfile
-        self.tools = tools if tools else []
+        self.tools = tools if tools else dict()
 
     def __hash__(self):
         return hash(self.exercise_code)
@@ -39,5 +40,18 @@ class Exercise:
 
             except:
                 continue
+
+    def runToolsAndTests(self):
+        # chdir to exercise directory
+        if os.path.basename(os.getcwd()) != self.exercise_code:
+            # Make directory for exercise and go there
+            mkchdir(str(self.exercise_code))
+
+        for tool, opts in self.tools:
+            if tool == Tool.Pylint:
+                # pylint_opts = opts
+                # pylint.lint.Run(pylint_opts)
+                pass
+
 
 

@@ -1,15 +1,22 @@
 import os
 from canvasapi import Canvas
-
+from credentials import api_url, api_key
 from utils import mkchdir
 from Exercise import Exercise
 
 
 class Course:
-    def __init__(self, course_name: str, course_code: int, canvas_connection: Canvas):
+    canvas = None
+    try:
+        canvas = Canvas(api_url, api_key)
+    except Exception as e:
+        print(f'Exception occured: {e}')
+        exit()
+
+    def __init__(self, course_name: str, course_code: int):
         self.course_name = course_name
         self.course_code = course_code
-        self.course_obj = canvas_connection.get_course(course_code)
+        self.course_obj = self.canvas.get_course(course_code)
         self.exercises = list()
 
     def __hash__(self):
@@ -34,4 +41,9 @@ class Course:
 
         for exercise in self.exercises:
             exercise.downloadSubmissions()
+
+    def runToolsAndTests(self):
+        for exercise in self.exercises:
+            exercise.runToolsAndTests()
+
 

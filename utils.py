@@ -21,5 +21,5 @@ class FileType(Enum):
     PY = 1
 
 
-class Tools(Enum):
+class Tool(Enum):
     Pylint = 1

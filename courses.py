@@ -1,5 +1,6 @@
 from Course import Course
-from utils import FileType as FileType, Tools as Tools
+from utils import FileType as FileType
+from utils import Tool as Tool
 '''
 courses = {
     Course: {                       # Course object from Course.py
@@ -19,13 +20,13 @@ courses = {
     prog: {
         150429: {
             'filetype': FileType.Py,
-            'tools': [Tools.Pylint],
+            'tools': {Tool.Pylint: "Pylint opts"},
             'testfile': "define_some_testscript.py"
         },
         150430: {
             'filetype': FileType.PY,
-            'tools': [Tools.Pylint],
-            'testfile': "define_some_testscript.py"
+            'tools': {Tool.Pylint: "Pylint opts"},
+            'testfile': "define_some_test}script.py"
         }
     }
 }
