@@ -14,6 +14,11 @@ class Course:
         exit()
 
     def __init__(self, course_code: int):
+        """
+        Initializes a Course object.
+
+        :param course_code: integer representing course code on Canvas
+        """
         self.course_code = course_code
         self.course_obj = self.canvas.get_course(self.course_code)
         self.course_name = self.course_obj.name
@@ -32,9 +37,20 @@ class Course:
         return repr(f"Course: {self.course_name}")
 
     def addExercise(self, exercise: Exercise):
+        """
+        Adds an exercise to the exercise list.
+
+        :param exercise:    Exercise object
+
+        """
         self.exercises.append(exercise)
 
     def downloadSubmissions(self):
+        """
+        Downloads all submissions for all exercises in the course by calling the downloadSubmissions method from the
+        Exercise objects.
+
+        """
         base_dir = os.getcwd()
         if os.path.basename(base_dir) != self.course_code:
             # Make directory for course and go there
@@ -47,10 +63,19 @@ class Course:
         os.chdir(base_dir)
 
     def runToolsAndTests(self):
+        """
+        Runs all tools and tests for all exercises in the course by calling the runToolsAndTests method from the
+        Exercise objects.
+
+        """
         for exercise in self.exercises:
             exercise.runToolsAndTests()
 
     def saveCourseObj(self):
+        """
+        Saves the course object to a predestined file (if changed at runtime)
+
+        """
         # saves course obj to file
         pass
 
