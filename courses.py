@@ -5,13 +5,13 @@ courses = {
     27193: {
         150429: {
             'filetype': FileType.Py,
-            'tools': {Tool.Pylint: "Pylint opts"},
-            'testfile': "define_some_testscript.py"
+            'testfile': "define_some_testscript.py",
+            'tools': {Tool.Pylint: "Pylint opts"}
         },
         150430: {
             'filetype': FileType.PY,
-            'tools': {Tool.Pylint: "Pylint opts"},
-            'testfile': "define_some_testscript.py"
+            'testfile': "define_some_testscript.py",
+            'tools': {Tool.Pylint: "Pylint opts"}
         }
     }
 }
