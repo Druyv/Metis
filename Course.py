@@ -70,29 +70,3 @@ class Course:
         """
         for exercise in self.exercises:
             exercise.runToolsAndTests()
-
-    def saveCourseObj(self):
-        """
-        Saves the course object to a predestined file (if changed at runtime)
-
-        """
-        # saves course obj to file
-        pass
-
-    def export(self):
-        """
-
-        :return:
-        """
-        return f'''{{self.course_code :
-                    {
-                        {
-                            exercise.exercise_code :
-                            {
-                                'filetype' : exercise.file_type,
-                                'testfile' : exercise.testfile,
-                                'tools' : exercise.tools
-                            } for exercise in self.exercises
-                        }
-                    }
-                }}'''

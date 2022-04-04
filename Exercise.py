@@ -73,7 +73,6 @@ class Exercise:
     def runToolsAndTests(self):
         """
         Runs all tools and tests for the exercise
-
         """
         # TODO: Check if submissions has been checked already
         # TODO: Actually run tools and tests

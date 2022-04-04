@@ -12,7 +12,5 @@ class CourseFactory():
         return course_list
 
     def saveCourse(self, course_objects, dest_file):
-        with open(dest_file, 'a+') as file:
-            for course in course_objects:
-                file.write(course.export())
-            pass
+        for course in course_objects:
+            course.export(dest_file)
