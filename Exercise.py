@@ -70,6 +70,12 @@ class Exercise:
             os.chdir(str(self.exercise_code))
         os.chdir(base_dir)
 
+    def commentOnSubmission(self):
+        """
+        Reads feedback from file and posts it to the linked submission
+        """
+        pass
+
     def runToolsAndTests(self):
         """
         Runs all tools and tests for the exercise
@@ -84,13 +90,18 @@ class Exercise:
 
         for submission in os.listdir():
             os.chdir(submission)
+            # TODO: Run test file
             for tool, opts in self.tools.items():
                 if tool == Tool.Pylint:
                     # pylint_opts = opts
                     # pylint.lint.Run(pylint_opts)
+                    # TODO: Save feedback
                     pass
+            # TODO: Post feedback: commentOnSubmission
             os.chdir(str(self.exercise_code))
 
         os.chdir(base_dir)
+
+
 
 
