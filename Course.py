@@ -7,6 +7,9 @@ from Exercise import Exercise
 
 
 class Course:
+    """
+    Class to represent a course.
+    """
     canvas = None
     try:
         canvas = Canvas(api_url, api_key)
@@ -32,7 +35,7 @@ class Course:
         return self.course_code == other.course_code
 
     def __ne__(self, other):
-        return not(self == other)
+        return not self == other
 
     def __repr__(self):
         return repr(f"Course: {self.course_name}")
@@ -47,8 +50,8 @@ class Course:
 
     def downloadSubmissions(self):
         """
-        Downloads all submissions for all exercises in the course by calling the downloadSubmissions method from the
-        Exercise objects.
+        Downloads all submissions for all exercises in the course by calling the downloadSubmissions
+        method from the Exercise objects.
         """
         base_dir = os.getcwd()
         if os.path.basename(base_dir) != self.course_code:
@@ -63,8 +66,8 @@ class Course:
 
     def runToolsAndTests(self):
         """
-        Runs all tools and tests for all exercises in the course by calling the runToolsAndTests method from the
-        Exercise objects.
+        Runs all tools and tests for all exercises in the course by calling the runToolsAndTests
+        method from the Exercise objects.
         """
         for exercise in self.exercises:
             exercise.runToolsAndTests()
