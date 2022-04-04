@@ -25,6 +25,7 @@ class Exercise:
         self.file_type = file_type
         self.testfile = testfile
         self.tools = tools if tools else {}
+        print("HEllo Worlds")
 
     def __hash__(self):
         return hash(self.exercise_code)
