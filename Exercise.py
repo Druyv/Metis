@@ -53,6 +53,8 @@ class Exercise:
         :param tool:    Tool enum type
         :param opts:    str
         """
+        if not self.tools[tool]:
+            self.tools[tool] = []
         self.tools[tool].append(opts)
 
     def downloadSubmissions(self, course_obj):
