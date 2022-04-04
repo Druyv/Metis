@@ -61,7 +61,6 @@ class Exercise:
         for submission in submission_list:
             try:
                 if len(submission.attachments):
-                    # Make directory for submission and go there
                     mkchdir(f'{submission.user_id}{submission.submitted_at}')
                     # Download submissions
 

@@ -1,4 +1,5 @@
 import os
+import sys
 from canvasapi import Canvas
 from credentials import api_url, api_key
 from utils import mkchdir
@@ -11,9 +12,9 @@ class Course:
         canvas = Canvas(api_url, api_key)
     except Exception as e:
         print(f'Exception occured: {e}')
-        exit()
+        sys.exit()
 
-    def __init__(self, course_code: int):
+    def __init__(self, course_code):
         """
         Initializes a Course object.
 
@@ -22,7 +23,7 @@ class Course:
         self.course_code = course_code
         self.course_obj = self.canvas.get_course(self.course_code)
         self.course_name = self.course_obj.name
-        self.exercises = list()
+        self.exercises = []
 
     def __hash__(self):
         return hash(self.course_code)
@@ -41,7 +42,6 @@ class Course:
         Adds an exercise to the exercise list.
 
         :param exercise:    Exercise object
-
         """
         self.exercises.append(exercise)
 
@@ -49,7 +49,6 @@ class Course:
         """
         Downloads all submissions for all exercises in the course by calling the downloadSubmissions method from the
         Exercise objects.
-
         """
         base_dir = os.getcwd()
         if os.path.basename(base_dir) != self.course_code:
@@ -66,7 +65,6 @@ class Course:
         """
         Runs all tools and tests for all exercises in the course by calling the runToolsAndTests method from the
         Exercise objects.
-
         """
         for exercise in self.exercises:
             exercise.runToolsAndTests()
