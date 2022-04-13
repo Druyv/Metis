@@ -1,7 +1,10 @@
 import os
+import sys
 import requests
-from utils import mkchdir, FileType as FileType, Tool as Tool
+import pylint
+from utils import mkchdir, chdirUpper, FileType as FileType, Tool as Tool
 import credentials as cr
+import json
 
 
 class Exercise:
@@ -65,25 +68,24 @@ class Exercise:
 
         :param course_obj:  Canvas course object to get submissions from
         """
-        # TODO: Check if submissions has been checked already
-
-        base_dir = os.getcwd()
-        if os.path.basename(base_dir) != self.exercise_code:
-            mkchdir(str(self.exercise_code))
+        # TODO: Check if newest version of
+        mkchdir(str(self.exercise_code))
 
         submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
 
         for submission in submission_list:
             try:
                 if len(submission.attachments):
-                    mkchdir(f'{submission.user_id}{submission.submitted_at}')
+                    mkchdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
                     for attachment in submission.attachments:
-                        with open(attachment.filename, 'wb') as f:
-                            f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
-            except:
+                        filepath = os.path.join(os.getcwd(), attachment['filename'])
+                        if not os.path.exists(filepath):
+                            with open(filepath, 'wb') as f:
+                                f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
+                    os.chdir("..")
+            except Exception as e:
                 pass
-            os.chdir(str(self.exercise_code))
-        os.chdir(base_dir)
+        os.chdir("..")
 
     def commentOnSubmission(self):
         """
@@ -97,21 +99,19 @@ class Exercise:
         """
         # TODO: Check if submissions has been checked already
         # TODO: Actually run tools and tests
-
-        base_dir = os.getcwd()
-        if os.path.basename(base_dir) != self.exercise_code:
-            # Make directory for exercise and go there
-            mkchdir(str(self.exercise_code))
-
+        os.chdir(str(self.exercise_code))
+        print(len(os.listdir()))
         for submission in os.listdir():
             os.chdir(submission)
+            print(os.getcwd())
             # TODO: Run test file
             for tool, opts in self.tools.items():
                 if tool == Tool.Pylint:
+                    # print(opts)
                     # pylint_opts = opts
-                    # pylint.lint.Run(pylint_opts)
-                    # TODO: Save feedback
-                    pass
+                    print("Running pylint")
+                    sys.argv = ["pylint", "--output=pylint.txt", os.listdir()[0]]
+                    pylint.run_pylint()
             # TODO: Post feedback: commentOnSubmission
-            os.chdir(str(self.exercise_code))
-        os.chdir(base_dir)
+            os.chdir("..")
+        os.chdir("..")

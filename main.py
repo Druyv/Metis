@@ -1,19 +1,24 @@
 import os
 
-from Course import Course
+from CourseFactory import CourseFactory
 from utils import mkchdir
 from courses import courses
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    main_dir = os.getcwd()
-    mkchdir("Courses")
-    course_list = []
-    for course in courses:
-        course_list.append(Course(course))
+    print("Starting to check submissions to be graded")
+    mkchdir("courses")
+
+    course_factory = CourseFactory()
+    course_list = course_factory.makeNewCoursesFromDict(courses)
 
     for course in course_list:
-        mkchdir(str(course.course_code))
+        print(f"Downloading submissions for {course.course_name}")
         course.downloadSubmissions()
+        print(f"Running tools for {course.course_name}")
         course.runToolsAndTests()
-        os.chdir("Courses")
+        os.chdir("..")
+    # TODO: Generate report
+    # print("Deleting submissions")
+    # os.rmdir("courses")
+    print("All done!")

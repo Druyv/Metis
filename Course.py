@@ -2,8 +2,8 @@ import os
 import sys
 from canvasapi import Canvas
 from credentials import API_URL, API_KEY
-from utils import mkchdir
 from Exercise import Exercise
+from utils import mkchdir
 
 
 class Course:
@@ -53,21 +53,17 @@ class Course:
         Downloads all submissions for all exercises in the course by calling the downloadSubmissions
         method from the Exercise objects.
         """
-        base_dir = os.getcwd()
-        if os.path.basename(base_dir) != self.course_code:
-            # Make directory for course and go there
-            mkchdir(str(self.course_code))
-
+        mkchdir(str(self.course_code))
         for exercise in self.exercises:
             exercise.downloadSubmissions(self.course_obj)
-
-        # Go back to original directory
-        os.chdir(base_dir)
+        os.chdir("..")
 
     def runToolsAndTests(self):
         """
         Runs all tools and tests for all exercises in the course by calling the runToolsAndTests
         method from the Exercise objects.
         """
+        os.chdir(str(self.course_code))
         for exercise in self.exercises:
             exercise.runToolsAndTests()
+        os.chdir("..")

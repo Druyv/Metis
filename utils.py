@@ -13,8 +13,15 @@ def mkchdir(new_dir):
         os.mkdir(new_dir.lower())
     except FileExistsError:
         pass
+    except FileNotFoundError:
+        print("Directory not found")
+        exit()
     finally:
         os.chdir(new_dir)
+
+def chdirUpper(new_dir):
+    os.chdir("..")
+    mkchdir(new_dir)
 
 
 class FileType(Enum):
@@ -22,7 +29,7 @@ class FileType(Enum):
     This class represents the different types of files that can be created.
 
     """
-    PY = 1
+    Py = 1
 
 
 class Tool(Enum):
