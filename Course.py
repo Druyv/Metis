@@ -1,7 +1,7 @@
 import os
 import sys
 from canvasapi import Canvas
-from credentials import api_url, api_key
+from credentials import API_URL, API_KEY
 from utils import mkchdir
 from Exercise import Exercise
 
@@ -12,7 +12,7 @@ class Course:
     """
     canvas = None
     try:
-        canvas = Canvas(api_url, api_key)
+        canvas = Canvas(API_URL, API_KEY)
     except Exception as e:
         print(f'Exception occured: {e}')
         sys.exit()

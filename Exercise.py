@@ -1,5 +1,7 @@
 import os
+import requests
 from utils import mkchdir, FileType as FileType, Tool as Tool
+import credentials as cr
 
 
 class Exercise:
@@ -64,7 +66,6 @@ class Exercise:
         :param course_obj:  Canvas course object to get submissions from
         """
         # TODO: Check if submissions has been checked already
-        # TODO: Actually download
 
         base_dir = os.getcwd()
         if os.path.basename(base_dir) != self.exercise_code:
@@ -72,13 +73,13 @@ class Exercise:
 
         submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
 
-        print(len(list(submission_list)))
         for submission in submission_list:
             try:
                 if len(submission.attachments):
                     mkchdir(f'{submission.user_id}{submission.submitted_at}')
-                    # Download submissions
-
+                    for attachment in submission.attachments:
+                        with open(attachment.filename, 'wb') as f:
+                            f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
             except:
                 pass
             os.chdir(str(self.exercise_code))

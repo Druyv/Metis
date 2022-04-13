@@ -8,7 +8,7 @@ from courses import courses
 if __name__ == '__main__':
     main_dir = os.getcwd()
     mkchdir("Courses")
-    course_list = list()
+    course_list = []
     for course in courses:
         course_list.append(Course(course))
 
