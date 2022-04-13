@@ -114,5 +114,4 @@ class Exercise:
                     pass
             # TODO: Post feedback: commentOnSubmission
             os.chdir(str(self.exercise_code))
-
         os.chdir(base_dir)
