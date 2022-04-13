@@ -4,6 +4,9 @@ from Exercise import Exercise
 
 
 class CourseFactory():
+    """
+    CourseFactory class
+    """
     def makeNewCoursesFromDict(self, dict):
         """
         Creates a list of Course objects from a dictionary describing the courses
