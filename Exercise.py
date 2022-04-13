@@ -97,19 +97,19 @@ class Exercise:
         """
         Runs all tools and tests for the exercise
         """
-        # TODO: Check if submissions has been checked already
-        # TODO: Actually run tools and tests
+        # TODO: Check if submission has been checked already
+        # TODO: Run tests
         os.chdir(str(self.exercise_code))
         print(len(os.listdir()))
         for submission in os.listdir():
             os.chdir(submission)
             print(os.getcwd())
-            # TODO: Run test file
             for tool, opts in self.tools.items():
                 if tool == Tool.Pylint:
                     # print(opts)
                     # pylint_opts = opts
-                    print("Running pylint")
+                    # TODO: Add pylint options
+                    # TODO: Spawn a process for pylint - right now it only executes once
                     sys.argv = ["pylint", "--output=pylint.txt", os.listdir()[0]]
                     pylint.run_pylint()
             # TODO: Post feedback: commentOnSubmission
