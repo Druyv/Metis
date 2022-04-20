@@ -5,6 +5,7 @@ import pylint
 from utils import mkchdir, chdirUpper, FileType as FileType, Tool as Tool
 import credentials as cr
 import json
+import subprocess
 
 
 class Exercise:
@@ -97,21 +98,19 @@ class Exercise:
         """
         Runs all tools and tests for the exercise
         """
-        # TODO: Check if submission has been checked already
-        # TODO: Run tests
         os.chdir(str(self.exercise_code))
-        print(len(os.listdir()))
         for submission in os.listdir():
             os.chdir(submission)
-            print(os.getcwd())
+            if "pylint.txt" in os.listdir():
+                os.chdir("..")
+                continue
             for tool, opts in self.tools.items():
                 if tool == Tool.Pylint:
                     # print(opts)
                     # pylint_opts = opts
                     # TODO: Add pylint options
-                    # TODO: Spawn a process for pylint - right now it only executes once
-                    sys.argv = ["pylint", "--output=pylint.txt", os.listdir()[0]]
-                    pylint.run_pylint()
+                    args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
+                    subprocess.call(args)
             # TODO: Post feedback: commentOnSubmission
             os.chdir("..")
         os.chdir("..")
