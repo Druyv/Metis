@@ -69,7 +69,6 @@ class Exercise:
 
         :param course_obj:  Canvas course object to get submissions from
         """
-        # TODO: Check if newest version of
         mkchdir(str(self.exercise_code))
 
         submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
@@ -92,7 +91,31 @@ class Exercise:
         """
         Reads feedback from file and posts it to the linked submission
         """
+        # TODO: Comment on submissions if feedback was generated
         return
+
+    def runTools(self):
+        """
+        Runs the tools on the exercise files
+        """
+        for tool, opts in self.tools.items():
+            if tool == Tool.Pylint:
+                if "pylint.txt" in os.listdir():
+                    continue
+                # print(opts)
+                # pylint_opts = opts
+                # TODO: Add pylint options
+                args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
+                subprocess.call(args)
+
+    def runTests(self):
+        """
+        Runs the tests on the exercise files
+        """
+        if self.testfile is not None:
+            if "test_results.txt" not in os.listdir():
+                # TODO: Run tests
+                pass
 
     def runToolsAndTests(self):
         """
@@ -101,16 +124,8 @@ class Exercise:
         os.chdir(str(self.exercise_code))
         for submission in os.listdir():
             os.chdir(submission)
-            if "pylint.txt" in os.listdir():
-                os.chdir("..")
-                continue
-            for tool, opts in self.tools.items():
-                if tool == Tool.Pylint:
-                    # print(opts)
-                    # pylint_opts = opts
-                    # TODO: Add pylint options
-                    args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
-                    subprocess.call(args)
+            self.runTools()
+            self.runTests()
             # TODO: Post feedback: commentOnSubmission
             os.chdir("..")
         os.chdir("..")
