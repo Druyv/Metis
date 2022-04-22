@@ -102,10 +102,10 @@ class Exercise:
             if tool == Tool.Pylint:
                 if "pylint.txt" in os.listdir():
                     continue
-                # print(opts)
-                # pylint_opts = opts
-                # TODO: Add pylint options
-                args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
+                if opts is not None:
+                    args = ["pylint", opts, "--output=pylint.txt", os.listdir()[0]]
+                else:
+                    args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
                 subprocess.call(args)
 
     def runTests(self):
@@ -125,7 +125,7 @@ class Exercise:
         for submission in os.listdir():
             os.chdir(submission)
             self.runTools()
-            self.runTests()
+            # self.runTests()
             # TODO: Post feedback: commentOnSubmission
             os.chdir("..")
         os.chdir("..")

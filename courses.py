@@ -6,12 +6,12 @@ courses = {
         150441: {
             'filetype': FileType.Py,
             'testfile': "define_some_testscript.py",
-            'tools': {Tool.Pylint: "Pylint opts"}
+            'tools': {Tool.Pylint: "--disable=C0304, C0114"}
         },
         150445: {
             'filetype': FileType.Py,
             'testfile': "define_some_testscript.py",
-            'tools': {Tool.Pylint: "Pylint opts"}
+            'tools': {Tool.Pylint: None}
         }
     }
 }
