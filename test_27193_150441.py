@@ -5,7 +5,7 @@ import sys
 
 class TestFinalResult(unittest.TestCase):
 
-     def test_final_result(self):
+    def test_final_result(self):
         args = ["python", "opdr4_6.py"]
         # This runs the student's code in a new process and returns the output
         process = subprocess.check_output(args)
@@ -26,4 +26,4 @@ def run_tests():
 
 
 if __name__ == '__main__':
-        run_tests()
+    run_tests()
