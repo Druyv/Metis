@@ -118,11 +118,9 @@ class Exercise:
                     # TODO: Download testfile
                     pass
                 args = ["python", self.testfile, "-v"]
-                # TODO: Currently output is captured and written to file in the test case, but I want the test cases
-                # TODO: to return the output to this function and this function to write them to a file -
-                # TODO: It shouldn't be the responsibility of the test writer to make sure the output is written
-                # TODO: to a file, it should be mine.
-                process = subprocess.Popen(args).wait()
+                process = subprocess.check_output(args)
+                with open("test_results.txt", "w") as f:
+                    f.write(process.decode("utf-8"))
 
     def runToolsAndTests(self):
         """

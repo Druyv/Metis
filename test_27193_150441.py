@@ -1,7 +1,6 @@
 import unittest
 import subprocess
 import sys
-import os
 
 """
 This is a test suite for assignment 150441 from course 27193.
@@ -31,12 +30,11 @@ class TestFinalResult(unittest.TestCase):
         self.assertEqual(output, ['u', 'i', 'o', 'a', 'o', 'u', 'e', 'e', 'o', 'a', 'e', 'e', 'a', 'a', 'o', 'e', 'a'])
 
 
-def run_tests(file_name):
+def run_tests():
     loader = unittest.TestLoader()
     suite = loader.loadTestsFromTestCase(TestFinalResult)
-    unittest.TextTestRunner(file_name).run(suite)
+    unittest.TextTestRunner(sys.stdout, verbosity=2).run(suite)
 
 
 if __name__ == '__main__':
-    with open('test_results.txt', "w+") as f:
-        run_tests(f)
+        run_tests()
