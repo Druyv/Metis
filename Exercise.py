@@ -106,7 +106,7 @@ class Exercise:
                     args = ["pylint", opts, "--output=pylint.txt", os.listdir()[0]]
                 else:
                     args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
-                subprocess.call(args)
+                subprocess.Popen(args).wait()
 
     def runTests(self):
         """
@@ -114,8 +114,11 @@ class Exercise:
         """
         if self.testfile is not None:
             if "test_results.txt" not in os.listdir():
-                # TODO: Run tests
-                pass
+                if self.testfile not in os.listdir():
+                    # TODO: Download testfile
+                    pass
+                args = ["python", self.testfile, "-v"]
+                process = subprocess.Popen(args).wait()
 
     def runToolsAndTests(self):
         """

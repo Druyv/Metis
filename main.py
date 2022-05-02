@@ -19,7 +19,7 @@ if __name__ == '__main__':
         print(f"Running tools for {course.course_name}")
         course.runToolsAndTests()
         os.chdir("..")
-    # TODO: Generate report
+    # TODO: Generate report/logging
     # print("Deleting submissions")
     # os.rmdir("courses")
     print("All done!")
