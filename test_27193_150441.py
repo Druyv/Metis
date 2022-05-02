@@ -2,17 +2,6 @@ import unittest
 import subprocess
 import sys
 
-"""
-This is a test suite for assignment 150441 from course 27193.
-
-This example is used to showcase how to test an exercise that simply prints the
-expected output. It is generally advisable to run the tests in a new process as
-to stop the student's code from potentially accessing the test suite's internals.
-
-Using the subprocess.check_output() function, the output of the student's code is
-returned (as a byte string), which we can then decode to a string, parse and check.
-"""
-
 
 class TestFinalResult(unittest.TestCase):
 
