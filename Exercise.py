@@ -115,13 +115,16 @@ class Exercise:
         if self.testfile is not None:
             if "test_results.txt" not in os.listdir():
                 if self.testfile not in os.listdir():
-                    root_path = Path(__file__).resolve().parents[4]
+                    root_path = Path(__file__).parents[0]
                     test_path = os.path.join(root_path, "test_files", self.testfile)
                     shutil.copy(test_path, os.getcwd())
                 args = ["python", self.testfile, "-v"]
-                process = subprocess.check_output(args)
-                with open("test_results.txt", "w") as f:
-                    f.write(process.decode("utf-8"))
+                try:
+                    process = subprocess.check_output(args)
+                    with open("test_results.txt", "w") as f:
+                        f.write(process.decode("utf-8"))
+                except Exception as e:
+                    print(e)
 
     def runToolsAndTests(self):
         """
@@ -131,7 +134,7 @@ class Exercise:
         for submission in os.listdir():
             os.chdir(submission)
             self.runTools()
-            # self.runTests()
+            self.runTests()
             # TODO: Post feedback: commentOnSubmission
             os.chdir("..")
         os.chdir("..")
