@@ -15,8 +15,7 @@ if __name__ == '__main__':
     for course in course_list:
         print(f"Downloading submissions for {course.course_name}")
         course.downloadSubmissions()
-        input("Everything has been downloaded, press enter to run tools")
-        print(f"Running tools for {course.course_name}")
+        print(f"Running tools and tests for {course.course_name}")
         course.runToolsAndTests()
         os.chdir("..")
     # TODO: Generate report/logging
