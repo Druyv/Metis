@@ -1,12 +1,14 @@
 import unittest
 import subprocess
+import os
 import sys
 
 
 class TestFinalResult(unittest.TestCase):
 
     def test_final_result(self):
-        args = ["python", "opdr4_6.py"]
+        # Define args and find the name of the file that needs to be run
+        args = ["python", next(x for x in os.listdir() if '.py' in x and x != os.path.basename(__file__))]
         # This runs the student's code in a new process and returns the output
         process = subprocess.check_output(args)
         # This decodes the byte string into a string
@@ -16,7 +18,8 @@ class TestFinalResult(unittest.TestCase):
         # This removes an empty string from the end of the list
         output = output[:-1]
         # Check if the final result is correct
-        self.assertEqual(output, ['u', 'i', 'o', 'a', 'o', 'u', 'e', 'e', 'o', 'a', 'e', 'e', 'a', 'a', 'o', 'e', 'a'])
+        expected_output = ['u', 'i', 'o', 'a', 'o', 'u', 'e', 'e', 'o', 'a', 'e', 'e', 'a', 'a', 'o', 'e', 'a']
+        self.assertEqual(output, expected_output)
 
 
 def run_tests():

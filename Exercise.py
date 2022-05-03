@@ -1,11 +1,10 @@
 import os
-import sys
 import requests
-import pylint
-from utils import mkchdir, chdirUpper, FileType as FileType, Tool as Tool
+from utils import mkchdir, FileType as FileType, Tool as Tool
 import credentials as cr
-import json
 import subprocess
+import shutil
+from pathlib import Path
 
 
 class Exercise:
@@ -22,6 +21,7 @@ class Exercise:
         dict of strings containing the tool and the options for the tool.
         Testfile and tools can be added later.
 
+        :param course_code:     int
         :param exercise_code:   int
         :param file_type:       FileType
         :param testfile:        str
@@ -115,8 +115,9 @@ class Exercise:
         if self.testfile is not None:
             if "test_results.txt" not in os.listdir():
                 if self.testfile not in os.listdir():
-                    # TODO: Download testfile
-                    pass
+                    root_path = Path(__file__).resolve().parents[4]
+                    test_path = os.path.join(root_path, "test_files", self.testfile)
+                    shutil.copy(test_path, os.getcwd())
                 args = ["python", self.testfile, "-v"]
                 process = subprocess.check_output(args)
                 with open("test_results.txt", "w") as f:
