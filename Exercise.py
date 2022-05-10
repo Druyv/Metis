@@ -108,21 +108,41 @@ class Exercise:
                     args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
                 subprocess.Popen(args).wait()
 
+    def checkForInput(self):
+        """
+        Since subprocess halts whenever a subprocess asks for input (and because of a bug in the library preventing a timeout
+        from working when stdout or stdin is redirected) it is currently impossible to test code that contains the `input()`
+        builtin. As such, the following code is used to detect the presence of the `input()` function.
+
+        If input is detected, the runTests() function will skip running the tests.
+        """
+        filename = next(x for x in os.listdir() if '.py' in x and x != self.testfile)
+        with open(filename, 'r') as f:
+            content = f.readlines()
+        return any('input(' in line for line in content)
+
     def runTests(self):
         """
         Runs the tests on the exercise files
         """
         if self.testfile is not None:
             if "test_results.txt" not in os.listdir():
-                if self.testfile not in os.listdir():
-                    root_path = Path(__file__).parents[0]
-                    test_path = os.path.join(root_path, "test_files", self.testfile)
-                    shutil.copy(test_path, os.getcwd())
-                args = ["python", self.testfile, "-v"]
+                # if self.testfile not in os.listdir():
+                #     root_path = Path(__file__).parents[0]
+                #     test_path = os.path.join(root_path, "test_files", self.testfile)
+                #     shutil.copy(test_path, os.getcwd())
+                # args = ["python", self.testfile, "-v"]
+                root_path = Path(__file__).parents[0]
+                test_path = os.path.join(root_path, "test_files", self.testfile)
+                args = ["python", test_path, "-v"]
                 try:
-                    process = subprocess.check_output(args)
-                    with open("test_results.txt", "w") as f:
-                        f.write(process.decode("utf-8"))
+                    if not self.checkForInput():
+                        process = subprocess.check_output(args)
+                        with open("test_results.txt", "w") as f:
+                            f.write(process.decode("utf-8"))
+                    else:
+                        with open("test_results.txt", "w") as f:
+                            f.write("Tests skipped because of the presence of the input function")
                 except Exception as e:
                     print(e)
 
@@ -135,6 +155,6 @@ class Exercise:
             os.chdir(submission)
             self.runTools()
             self.runTests()
-            # TODO: Post feedback: commentOnSubmission
+            # self.commentOnSubmission()
             os.chdir("..")
         os.chdir("..")

@@ -7,7 +7,6 @@ import sys
 class TestFinalResult(unittest.TestCase):
 
     def test_final_result(self):
-        # TODO: Figure out a way to handle if students use input or non terminating code
         # Define args and find the name of the file that needs to be run
         args = ["python", next(x for x in os.listdir() if '.py' in x and x != os.path.basename(__file__))]
         # This runs the student's code in a new process and returns the output
@@ -26,7 +25,7 @@ class TestFinalResult(unittest.TestCase):
 def run_tests():
     loader = unittest.TestLoader()
     suite = loader.loadTestsFromTestCase(TestFinalResult)
-    unittest.TextTestRunner(sys.stdout, verbosity=2).run(suite)
+    unittest.TextTestRunner(sys.stdout, verbosity=1).run(suite)
 
 
 if __name__ == '__main__':
