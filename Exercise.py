@@ -1,10 +1,10 @@
 import os
 import requests
+import subprocess
+from pathlib import Path
+
 from utils import mkchdir, FileType as FileType, Tool as Tool
 import credentials as cr
-import subprocess
-import shutil
-from pathlib import Path
 
 
 class Exercise:
@@ -21,7 +21,6 @@ class Exercise:
         dict of strings containing the tool and the options for the tool.
         Testfile and tools can be added later.
 
-        :param course_code:     int
         :param exercise_code:   int
         :param file_type:       FileType
         :param testfile:        str
@@ -108,7 +107,7 @@ class Exercise:
                     args = ["pylint", "--output=pylint.txt", os.listdir()[0]]
                 subprocess.Popen(args).wait()
 
-    def checkForInput(self):
+    def submissionContainsInput(self):
         """
         Since subprocess halts whenever a subprocess asks for input (and because of a bug in the library preventing a timeout
         from working when stdout or stdin is redirected) it is currently impossible to test code that contains the `input()`
@@ -127,16 +126,11 @@ class Exercise:
         """
         if self.testfile is not None:
             if "test_results.txt" not in os.listdir():
-                # if self.testfile not in os.listdir():
-                #     root_path = Path(__file__).parents[0]
-                #     test_path = os.path.join(root_path, "test_files", self.testfile)
-                #     shutil.copy(test_path, os.getcwd())
-                # args = ["python", self.testfile, "-v"]
                 root_path = Path(__file__).parents[0]
                 test_path = os.path.join(root_path, "test_files", self.testfile)
                 args = ["python", test_path, "-v"]
                 try:
-                    if not self.checkForInput():
+                    if not self.submissionContainsInput():
                         process = subprocess.check_output(args)
                         with open("test_results.txt", "w") as f:
                             f.write(process.decode("utf-8"))

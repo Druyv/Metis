@@ -1,6 +1,7 @@
 import os
 import sys
 from canvasapi import Canvas
+
 from credentials import API_URL, API_KEY
 from Exercise import Exercise
 from utils import mkchdir

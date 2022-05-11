@@ -1,9 +1,10 @@
 import json
+
 from Course import Course
 from Exercise import Exercise
 
 
-class CourseFactory():
+class CourseFactory:
     """
     CourseFactory class
     """
