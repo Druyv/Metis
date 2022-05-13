@@ -71,6 +71,7 @@ class Exercise:
         mkchdir(str(self.exercise_code))
 
         submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
+        print(list(submission_list)[0].__dict__)
 
         for submission in submission_list:
             try:
