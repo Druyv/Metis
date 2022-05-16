@@ -3,6 +3,15 @@ import subprocess
 import os
 import sys
 
+"""Testsuite voor opdracht xx van cursus yy"""
+
+__author__      = "John Doe"
+
+__version__     = "1.0"
+__status__      = "Production"
+__maintainer__  = "John Doe"
+__email__       = "john@doe.com"
+
 
 class TestFinalResult(unittest.TestCase):
 

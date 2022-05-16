@@ -1,3 +1,16 @@
+#!usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Automatic test- and feedback system for programming exercises"""
+
+__author__      = "Nick Goris"
+
+__version__     = "0.8"
+__status__      = "Development"
+__maintainer__  = "Nick Goris"
+__email__       = "nick_goris@outlook.com"
+
+
 import os
 
 from CourseFactory import CourseFactory
