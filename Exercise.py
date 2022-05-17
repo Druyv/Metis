@@ -68,6 +68,7 @@ class Exercise:
 
         :param course_obj:  Canvas course object to get submissions from
         """
+        count = 0
         mkchdir(str(self.exercise_code))
 
         submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
@@ -81,10 +82,12 @@ class Exercise:
                         if not os.path.exists(filepath):
                             with open(filepath, 'wb') as f:
                                 f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
+                                count += 1
                     os.chdir("..")
             except Exception as e:
                 pass
         os.chdir("..")
+        return count
 
     def commentOnSubmission(self):
         """

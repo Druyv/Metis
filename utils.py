@@ -1,5 +1,6 @@
 import os
 from enum import Enum
+from datetime import datetime
 
 
 def mkchdir(new_dir):
@@ -22,6 +23,9 @@ def mkchdir(new_dir):
 def chdirUpper(new_dir):
     os.chdir("..")
     mkchdir(new_dir)
+
+def logDate():
+    return datetime.now().strftime('%d/%m/%Y %H:%M:%S')
 
 
 class FileType(Enum):
