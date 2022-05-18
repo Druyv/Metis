@@ -19,13 +19,15 @@ from courses import courses
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    base_dir = os.getcwd()
     print("Starting to check submissions to be graded")
+    os.makedirs('logs', exist_ok=True)
     mkchdir("courses")
 
     course_factory = CourseFactory()
     course_list = course_factory.makeNewCoursesFromDict(courses)
 
-    with open(f'{datetime.now().strftime("%d-%m-%Y-%H-%M")}_log.txt', 'w+') as f:
+    with open(f'{base_dir}\\logs\\{datetime.now().strftime("%d-%m-%Y-%H-%M")}_log.txt', 'a+') as f:
         try:
             total_download_count = 0
             f.write(f"{logDate()}: Running with version {__version__}\n")
