@@ -55,12 +55,10 @@ class Course:
         Downloads all submissions for all exercises in the course by calling the downloadSubmissions
         method from the Exercise objects.
         """
-        count = 0
         mkchdir(str(self.course_code))
         for exercise in self.exercises:
-            count += exercise.downloadSubmissions(self.course_obj)
+            exercise.downloadSubmissions(self.course_obj)
         os.chdir("..")
-        return count
 
     def runToolsAndTests(self):
         """
