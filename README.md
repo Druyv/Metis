@@ -96,9 +96,9 @@ Setting up the project is rather easy - everything should work out of the box on
 <summary> Setting up for use with Canvas </summary>
 
 - __Canvas API key__:
-  Canvas forbids one from requesting the users of their applications to provide their own API key, but I obviously cannot     give you mine. I would recommend asking your Canvas/DLE administrator to give you a key. Metis expects you to store this   in a file called `credentials.py` in the root folder of the project, with a variable name `API_KEY`
+  Canvas forbids one from requesting the users of their applications to provide their own API key, but I obviously cannot     give you mine. I would recommend asking your Canvas/DLE administrator to give you a key. Metis expects you to store this in a file called `credentials.py` in the root folder of the project (for now), with a variable name `API_KEY`
 - __Canvas URL__:
-  In the same `credentials.py` file you should add a variable `API_URL`, which comes down to your organisation's Canvas       URL. For example, in the case of the HU, this is `https://canvas.hu.nl`
+  In the same `credentials.py` file you should add a variable `API_URL`, which comes down to your organisation's Canvas URL. For example, in the case of the HU, this is `https://canvas.hu.nl`
 
 </details>
 
