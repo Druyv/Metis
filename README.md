@@ -2,15 +2,15 @@ Personal Innovation Project Nick Goris - HU Utrecht University of Applied Scienc
 
 # Metis
 
-__THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE [ROADMAP FOR FUTURE PLANS](https://github.com/Druyv/Metis/edit/development/README.md#features "Metis README Features")__
+__THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE [ROADMAP FOR FUTURE PLANS](https://github.com/Druyv/Metis/tree/development/README.md#features "Metis README Features")__
 
 # Index
-- [About](https://github.com/Druyv/Metis/edit/development/README.md#about "Metis README About")
-- [Features](https://github.com/Druyv/Metis/edit/development/README.md#features "Metis README Features")
-- [Setup](https://github.com/Druyv/Metis/edit/development/README.md#setup "Metis README Setup")
-- [How to use](https://github.com/Druyv/Metis/edit/development/README.md#how-to-use "Metis README How to use")
-- [Credits](https://github.com/Druyv/Metis/edit/development/README.md#credits "Metis README Credits")
-- [License](https://github.com/Druyv/Metis/edit/development/README.md#license "Metis README License")
+- [About](https://github.com/Druyv/Metis/tree/development#about "Metis README About")
+- [Features](https://github.com/Druyv/Metis/tree/development#features "Metis README Features")
+- [Setup](https://github.com/Druyv/Metis/tree/development/README.md#setup "Metis README Setup")
+- [How to use](https://github.com/Druyv/Metis/tree/development/README.md#how-to-use "Metis README How to use")
+- [Credits](https://github.com/Druyv/Metis/tree/development/README.md#credits "Metis README Credits")
+- [License](https://github.com/Druyv/Metis/tree/development/README.md#license "Metis README License")
 
 # About
 The Metis Project is, primarily, a framework/tool to automatically generate and commit feedback on submitted programming homework. The way the project is set up should allow an independance and agnosticity of the programming language and platform submitted to, but the base version will only support Python code submitted to Canvas (DLE used by HU).
