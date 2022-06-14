@@ -80,7 +80,7 @@ One important note is that this project was never meant and should never be used
 
 # Setup
 ## Installation
-This project does not require any installation - clone the repo and you're ready to go! Do follow the [How To Use Guide](https://github.com/Druyv/Metis/edit/development/README.md#how-to-use "Link to How To Use Guide") to find out how to set up the project.
+This project does not require any installation - clone the repo and you're ready to go! Do follow the [Dependencies](https://github.com/Druyv/Metis/tree/development#dependencies "Metis README Dependencies") and [How To Use Guide](https://github.com/Druyv/Metis/tree/development/README.md#how-to-use "Metis README How to use") links to find out how to set up the project properly.
 
 ## Dependencies
 This project has a few dependencies:
