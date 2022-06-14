@@ -15,7 +15,11 @@ __THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE [ROADMAP FOR FUTURE PLANS]
 # About
 The Metis Project is, primarily, a framework/tool to automatically generate and commit feedback on submitted programming homework. The way the project is set up should allow an independance and agnosticity of the programming language and platform submitted to, but the base version will only support Python code submitted to Canvas (DLE used by HU).
 
-This project was built to alleviate and/or remedy a few issues encountered at the HU Utrecht University of Applied Sciences during first year programming classes of the HBO-ICT major. Every year HBO-ICT attracts approximately 500 students who all take the same introductory programming classes - this volume is so large that the HU can't supply enough in-house lecturers, so external lecturers have to be hired. This has two main consequences: 1. Quality of feedback is inconsistent, and 2. Feedback cycle can be very long. Metis was thought up to help alleviate and, hopefully, eliminate these grievances.
+This project was built to alleviate and/or remedy a few issues encountered at the HU Utrecht University of Applied Sciences during first year programming classes of the HBO-ICT major. Every year HBO-ICT attracts approximately 500 students who all take the same introductory programming classes - this volume is so large that the HU can't supply enough in-house lecturers, so external lecturers have to be hired. This has two main consequences: 
+1. Quality of feedback is inconsistent, and 
+2. 2. Feedback cycle can be very long. 
+ 
+Metis was thought up to help alleviate and, hopefully, eliminate these grievances.
 
 One important note is that this project was never meant and should never be used to replace in person/face to face feedback sessions. It generates basic feedback (whether solutions function correctly) and performs basic code quality checks. In depth feedback should theoretically be possible, but is not the goal.
 
@@ -120,7 +124,7 @@ course_list_from_json = course_factory.makeNewCoursesFromJson(<json_file>)  #If 
 ```
 </details>
 
-Once the webinterface for adding/changing courses/assignments, this step will no longer be necessary - but it is for now!
+Once the webinterface for adding/changing courses/assignments is implemented this step will no longer be necessary - but it is for now!
 
 # Credits
 
