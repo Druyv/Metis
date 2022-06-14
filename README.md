@@ -40,6 +40,7 @@ One important note is that this project was never meant and should never be used
   - running specified tools on all downloaded submissions
   - generating feedback from test and tool results
   - posting feedback as comments on submissions
+  - deleting downloaded submissions
 
 - Allows for manually:
   - adding new courses/assignments
