@@ -105,7 +105,7 @@ Setting up the project is rather easy - everything should work out of the box on
 # How to use
 ## Adding or updating a Course/Assignment
 
-In the current version of the software, courses and assignments need to be added manually. The skeleton for the dictionary is already set up in a file in the root folder called `courses.py`.\n
+In the current version of the software, courses and assignments need to be added manually. The skeleton for the dictionary is already set up in a file in the root folder called `courses.py`.\
 Alternatively, a JSON file can be used following the same basic structure as the Python dictionary. Either the Python dictionary or the JSON file can then be fed into the appropriate `CourseFactory.makeNewCoursesFrom..(..)` function (as illustrated in `main.py`) to get the project to work.
 
 <details>
