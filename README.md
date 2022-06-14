@@ -55,6 +55,7 @@ One important note is that this project was never meant and should never be used
   
 - Cleanup of project root folder
 - Safer API key storage
+- Automatic tests for development
 
 - Language agnostic
 - Tools can be user specified (will require additional programming for every tool)
