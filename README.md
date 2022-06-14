@@ -1,7 +1,7 @@
 # Metis
 Personal Innovation Project Nick Goris - HU Utrecht University of Applied Science, 2022
 
-__THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE FINAL PARAGRAPH FOR A ROADMAP__
+__THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE [ROADMAP FOR FUTURE PLANS](https://github.com/Druyv/Metis/edit/development/README.md#features "Metis README Features")__
 
 # Index
 - [About](https://github.com/Druyv/Metis/edit/development/README.md#about "Metis README About")
