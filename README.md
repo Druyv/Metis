@@ -118,6 +118,7 @@ course_list_from_json = course_factory.makeNewCoursesFromJson(<json_file>)  #If 
 ```
 </details>
 
+Once the webinterface for adding/changing courses/assignments, this step will no longer be necessary - but it is for now!
 
 # Credits
 
