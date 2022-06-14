@@ -59,7 +59,7 @@ One important note is that this project was never meant and should never be used
 - Tools can be user specified (will require additional programming for every tool)
 - Platform agnostic (will require additional programming for every platform)
 
-
+- Static CourseFactory
 - Add new courses/assignments through web interface
 - Update courses/assignments through web interface
 - Run containerised for easier setup
