@@ -89,8 +89,8 @@ This project does not require any installation - clone the repo and you're ready
 ## Dependencies
 This project has a few dependencies:
 - [At least PythonV3.8](https://www.python.org/downloads/release/python-380/ "Python 3.8 download page")
-- [CanvasAPI library](https://canvasapi.readthedocs.io/en/stable/getting-started.html "Canvas API Getting Started page") - only if using Canvas; to be installed using `pip install canvasapi`
-- [PyLint](https://pylint.pycqa.org/en/latest/ "PyLint latest version page") - only if using PyLint; to be installed using `pip install pylint`
+- [CanvasAPI library](https://canvasapi.readthedocs.io/en/stable/getting-started.html "Canvas API Getting Started page") - to be installed using `pip install canvasapi`
+- [PyLint](https://pylint.pycqa.org/en/latest/ "PyLint latest version page") - to be installed using `pip install pylint`
 
 ## Actually setting it up
 
@@ -125,6 +125,10 @@ course_list_from_json = course_factory.makeNewCoursesFromJson(<json_file>)  #If 
 </details>
 
 Once the webinterface for adding/changing courses/assignments is implemented this step will no longer be necessary - but it is for now!
+
+## Running Metis
+
+After this, it is simply a question of running the `main.py` file either by manually running `python main.py` from your command line of choice or by setting it up as a job to be executed periodically. 
 
 # Credits
 
