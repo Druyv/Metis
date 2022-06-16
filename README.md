@@ -9,6 +9,7 @@ __THIS PROJECT IS CURRENTLY STILL IN DEVELOPMENT, SEE [ROADMAP FOR FUTURE PLANS]
 - [Features](https://github.com/Druyv/Metis/tree/development#features "Metis README Features")
 - [Setup](https://github.com/Druyv/Metis/tree/development/README.md#setup "Metis README Setup")
 - [How to use](https://github.com/Druyv/Metis/tree/development/README.md#how-to-use "Metis README How to use")
+- [Development History](https://github.com/Druyv/Metis/tree/development/README.md#development-history "Metis README Development History")
 - [Credits](https://github.com/Druyv/Metis/tree/development/README.md#credits "Metis README Credits")
 - [License](https://github.com/Druyv/Metis/tree/development/README.md#license "Metis README License")
 
@@ -129,6 +130,8 @@ Once the webinterface for adding/changing courses/assignments is implemented thi
 ## Running Metis
 
 After this, it is simply a question of running the `main.py` file either by manually running `python main.py` from your command line of choice or by setting it up as a job to be executed periodically. 
+
+# Development History
 
 # Credits
 
