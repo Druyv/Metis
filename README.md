@@ -17,7 +17,7 @@ The Metis Project is, primarily, a framework/tool to automatically generate and 
 
 This project was built to alleviate and/or remedy a few issues encountered at the HU Utrecht University of Applied Sciences during first year programming classes of the HBO-ICT major. Every year HBO-ICT attracts approximately 500 students who all take the same introductory programming classes - this volume is so large that the HU can't supply enough in-house lecturers, so external lecturers have to be hired. This has two main consequences: 
 1. Quality of feedback is inconsistent, and 
-2. 2. Feedback cycle can be very long. 
+2. Feedback cycle can be very long. 
  
 Metis was thought up to help alleviate and, hopefully, eliminate these grievances.
 
