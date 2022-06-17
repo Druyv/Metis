@@ -10,7 +10,7 @@ from utils import mkchdir
 
 class Course:
     """
-    Class to represent a course.
+    Class to represent a course. Currently only supports Canvas courses.
     """
     canvas = None
     try:

@@ -11,13 +11,11 @@ __maintainer__  = "Nick Goris"
 __email__       = "nick_goris@outlook.com"
 
 import os
-from datetime import datetime
 
 from CourseFactory import CourseFactory
 from utils import mkchdir, logDate
 from courses import courses
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print("Starting to check submissions to be graded")
     mkchdir("courses")
