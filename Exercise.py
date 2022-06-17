@@ -86,13 +86,6 @@ class Exercise:
                 pass
         os.chdir("..")
 
-    def commentOnSubmission(self):
-        """
-        Reads feedback from file and posts it to the linked submission
-        """
-        # TODO: Comment on submissions if feedback was generated
-        return
-
     def runTools(self):
         """
         Runs the tools on the exercise files
@@ -149,6 +142,8 @@ class Exercise:
             os.chdir(submission)
             self.runTools()
             self.runTests()
-            # self.commentOnSubmission()
+            # submission.upload_comment('test_results.txt')
+            # submission.upload_comment('pylint.txt')
+            # submission.edit(submission={'posted_grade':0.8})
             os.chdir("..")
         os.chdir("..")
