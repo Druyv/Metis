@@ -1,6 +1,3 @@
-#!usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """Automatic test- and feedback system for programming exercises"""
 
 __author__      = "Nick Goris"
@@ -13,7 +10,7 @@ __email__       = "nick_goris@outlook.com"
 import os
 
 from CourseFactory import CourseFactory
-from utils import mkchdir, logDate
+from utils import mkchdir
 from courses import courses
 
 if __name__ == '__main__':

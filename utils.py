@@ -1,6 +1,5 @@
 import os
 from enum import Enum
-from datetime import datetime
 
 
 def mkchdir(new_dir):
@@ -24,9 +23,6 @@ def chdirUpper(new_dir):
     os.chdir("..")
     mkchdir(new_dir)
 
-def logDate():
-    return datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-
 
 class FileType(Enum):
     """
@@ -34,6 +30,21 @@ class FileType(Enum):
 
     """
     Py = 1
+
+
+class GradeType(Enum):
+    Points      = 1
+    Percentage  = 2
+    LetterGrade = 3
+    PassFail    = 4
+
+
+default_passgrades = {
+    GradeType.Points: 4,
+    GradeType.Percentage: 0.4,
+    GradeType.LetterGrade: 'D',
+    GradeType.PassFail: 0.0
+}
 
 
 class Tool(Enum):
