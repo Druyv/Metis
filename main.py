@@ -27,7 +27,6 @@ if __name__ == '__main__':
         course.runToolsAndTests()
         os.chdir("..")
 
-    #TODO: delete all downloaded submissions
-    #os.rmdir("courses")
+    os.rmdir("courses")
 
 

@@ -3,7 +3,7 @@ import requests
 import subprocess
 from pathlib import Path
 
-from utils import mkchdir, FileType as FileType, Tool as Tool
+from utils import mkchdir, FileType as FileType, Tool as Tool, GradeType as GradeType
 import credentials as cr
 
 
@@ -11,7 +11,7 @@ class Exercise:
     """
     Exercise class
     """
-    def __init__(self, exercise_code: int, file_type: FileType, testfile = None, tools = None,):
+    def __init__(self, exercise_code: int, file_type: FileType, grade_type: GradeType, passgrade, testfile = None, tools = None,):
         """
         Constructor for Exercise object
 
@@ -23,13 +23,18 @@ class Exercise:
 
         :param exercise_code:   int
         :param file_type:       FileType
+        :param grade_type:      GradeType
+        :param passgrade:       _
         :param testfile:        str
         :param tools:           Key/Value pairs of Tool(enum type) and options for the tool(str)
         """
         self.exercise_code = exercise_code
         self.file_type = file_type
+        self.grade_type = grade_type
+        self.passgrade = passgrade
         self.testfile = testfile
         self.tools = tools if tools else {}
+        self.submission_list = []
 
     def __hash__(self):
         return hash(self.exercise_code)
@@ -70,9 +75,9 @@ class Exercise:
         """
         mkchdir(str(self.exercise_code))
 
-        submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
+        self.submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
 
-        for submission in submission_list:
+        for submission in self.submission_list:
             try:
                 if submission.workflow_state == 'submitted':
                     mkchdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
@@ -133,6 +138,17 @@ class Exercise:
                 except Exception as e:
                     print(e)
 
+    def gradeSubmissions(self):
+        """
+        Grades submissions based on feedback generated and defined passgrades
+        """
+        for submission in self.submission_list:
+            os.chdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
+            submission.upload_comment('test_results.txt')
+            submission.upload_comment('pylint.txt')
+            submission.edit(submission={'posted_grade': self.passgrade})
+            os.chdir("..")
+
     def runToolsAndTests(self):
         """
         Runs all tools and tests for the exercise
@@ -142,8 +158,6 @@ class Exercise:
             os.chdir(submission)
             self.runTools()
             self.runTests()
-            # submission.upload_comment('test_results.txt')
-            # submission.upload_comment('pylint.txt')
-            # submission.edit(submission={'posted_grade':0.8})
             os.chdir("..")
+        self.gradeSubmissions()
         os.chdir("..")

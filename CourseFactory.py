@@ -19,7 +19,7 @@ class CourseFactory:
         for course, assignments in dict.items():
             new_course = Course(course)
             for assignment, details in assignments.items():
-                new_course.addExercise(Exercise(assignment, details['filetype'], details['testfile'], details['tools']))
+                new_course.addExercise(Exercise(assignment, details['filetype'], details['gradetype'], details['passgrade'], details['testfile'], details['tools']))
             course_list.append(new_course)
         return course_list
 
