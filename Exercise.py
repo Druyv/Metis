@@ -78,17 +78,14 @@ class Exercise:
         self.submission_list = course_obj.get_assignment(self.exercise_code).get_submissions()
 
         for submission in self.submission_list:
-            try:
-                if submission.workflow_state == 'submitted':
-                    mkchdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
-                    for attachment in submission.attachments:
-                        filepath = os.path.join(os.getcwd(), attachment['filename'])
-                        if not os.path.exists(filepath):
-                            with open(filepath, 'wb') as f:
-                                f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
-                    os.chdir("..")
-            except Exception as e:
-                pass
+            if submission.workflow_state == 'submitted':
+                mkchdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
+                for attachment in submission.attachments:
+                    filepath = os.path.join(os.getcwd(), attachment['filename'])
+                    if not os.path.exists(filepath):
+                        with open(filepath, 'wb') as f:
+                            f.write(requests.get(attachment['url'], allow_redirects=True, headers={'Authorization': f'Bearer {cr.API_KEY}'}).content)
+                os.chdir("..")
         os.chdir("..")
 
     def runTools(self):
@@ -143,11 +140,12 @@ class Exercise:
         Grades submissions based on feedback generated and defined passgrades
         """
         for submission in self.submission_list:
-            os.chdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
-            submission.upload_comment('test_results.txt')
-            submission.upload_comment('pylint.txt')
-            submission.edit(submission={'posted_grade': self.passgrade})
-            os.chdir("..")
+            if submission.workflow_state == 'submitted':
+                os.chdir(f'{submission.user_id}_{int(submission.submitted_at_date.timestamp())}')
+                submission.upload_comment('test_results.txt')
+                submission.upload_comment('pylint.txt')
+                submission.edit(submission={'posted_grade': self.passgrade})
+                os.chdir("..")
 
     def runToolsAndTests(self):
         """

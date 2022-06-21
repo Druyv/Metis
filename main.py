@@ -8,6 +8,7 @@ __maintainer__  = "Nick Goris"
 __email__       = "nick_goris@outlook.com"
 
 import os
+import shutil
 
 from CourseFactory import CourseFactory
 from utils import mkchdir
@@ -27,6 +28,7 @@ if __name__ == '__main__':
         course.runToolsAndTests()
         os.chdir("..")
 
-    os.rmdir("courses")
+    # Deletes all submissions
+    shutil.rmtree("courses")
 
 
