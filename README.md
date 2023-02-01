@@ -1,4 +1,5 @@
 Personal Innovation Project Nick Goris - HU Utrecht University of Applied Science, 2022
+> Currently abandoned <
 
 # Metis
 
